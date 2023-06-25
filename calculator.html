@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+<!-- INLINE CSS -->
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background:#fff;
+
+        }
+        .container{
+            position: relative;
+            max-width: 400px;
+            width:100%;
+            border-radius: 12px;
+            padding: 10px 20px;
+            background: rgb(210, 70, 235);
+            box-shadow:0 5px 10px rgba(0, 0,0,0.05)
+
+        }
+        .display{
+            padding-right: 2px;
+            height: 80px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 25px;
+            text-align: end;
+            outline: none;
+            border:2px solid black;
+            border-radius: 6px;
+            color: black;
+        }
+        .buttons{
+            display:grid;
+            grid-gap:10px;
+            grid-template-columns: repeat(4,1fr);
+        }
+        .buttons button{
+            padding:10px;
+            border: none;
+            width: 70px;
+            height:50px;
+            border-radius: 6px;
+            font-size: 28px;
+            background-color: rgb(255, 255, 255);
+            cursor: pointer;
+        }
+        .buttons button:active{
+            transform: scale(0.99);
+        }
+        .operator{
+            color: rgba(24, 253, 3, 0.788);
+        }
+        #head{
+            text-align: center;
+            color: black;
+            margin-bottom: 20px;
+        }
+    </style>
+
+
+
+
+</head>
+
+<!-- HTML CODE -->
+<body>
+    
+    <h1 id="head">CALCULATOR </h1>
+    <div class="container">
+       
+        <input type="text" id="inputtext" class="display" placeholder="0" />
+    <div class="buttons">
+        <button onclick="clr()" class="operator" data-value="AC">AC</button>
+        <button onclick="dlt()" class="operator" data-value="DEL">DEL</button>
+        <button onclick="calculate('%')" class="operator" data-value="%">%</button>
+        <button onclick="Result()"class="operator" data-value="=">=</button>
+
+        <button onclick="calculate(7)"  data-value="7">7</button>
+        <button onclick="calculate(8)" data-value="8">8</button>
+        <button onclick="calculate(9)" data-value="9">9</button>
+        <button onclick="calculate('+')" class="operator"  data-value="+">+</button>
+        
+
+        <button onclick="calculate(4)" data-value="4">4</button>
+        <button onclick="calculate(5)" data-value="5">5</button>
+        <button onclick="calculate(6)" data-value="6">6</button>
+        <button onclick="calculate('-')" class="operator" data-value="-">-</button>
+
+        <button onclick="calculate(1)" data-value="1">1</button>
+        <button onclick="calculate(2)" data-value="2">2</button>
+        <button onclick="calculate(3)" data-value="3">3</button>
+        <button onclick="calculate('*')" class="operator" data-value="*">*</button>
+
+        <button onclick="calculate(0)" data-value="0">0</button>
+        <button onclick="calculate(00)" data-value="00">00</button>
+        <button onclick="calculate('.')" data-value=".">.</button>
+
+        <button onclick="calculate('/')" class="operator" data-value="/">/</button>
+        
+    </div>
+    </div>
+
+
+<!-- JAVASCRIPT CODE -->
+
+    <script>
+       let result= document.getElementById("inputtext");
+       let calculate=(num)=>{
+        result.value+=num;
+       }
+       let Result=()=>{
+            try{
+                result.value=eval(result.value)
+            }
+            catch(err){
+                alert("Enter valid input 😡😡");
+            }
+       }
+       function clr(){
+        result.value="";
+       }
+
+       function dlt(){
+        result.value=result.value.slice(0, -1)
+       }
+
+    </script>
+
+
+
+</body>
+</html>
